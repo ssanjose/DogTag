@@ -1,6 +1,20 @@
 <div class="container">
   <h2>Top Dogs</h2>
-  <ul>
-    <%= render partial: "dog/dog_list", collection: @dogs, as: :dog %>
-  </ul>
+  <%= paginate @dogs %>
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "dog/dog_list", collection: @dogs, as: :dog %>
+    </tbody>
+  </table>
+  <%= paginate @dogs %>
 </div>

@@ -1,2 +1,22 @@
-<h1>Dog#show</h1>
-<p>Find me in app/views/dog/show.html.erb</p>
+<div class="container">
+
+  <div class="container d-flex flex-wrap">
+    <div>
+      <% if @dog.image.present? %>
+          <%= image_tag @dog.image.variant(resize_to_limit: [505, 505]).processed, alt: "#{@dog.name}"  %>
+      <% end %>
+    </div>
+    <div class="ms-5">
+      <h2><%= @dog.name %></h2>
+      <p><strong>Age:</strong> <%= @dog.age %></p>
+      <p><strong>Gender:</strong> <%= @dog.gender %></p>
+      <p><strong>Size:</strong> <%= @dog.size %></p>
+      <p><strong>Owner:</strong> <%= link_to @dog.owner.name, @dog.owner %></p>
+      <p><strong>Breed: </strong>
+        <% @dog.breed_dogs.each.with_index do |breed_dog, index| %>
+          <%= link_to breed_dog.breed.title, breed_dog.breed %></p>
+          <%= @dog.breed_dogs.count-1 != i ? ", " : "" %>
+        <% end %>
+    </div>
+  </div>
+</div>
