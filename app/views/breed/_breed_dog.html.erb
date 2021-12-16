@@ -1,16 +1,18 @@
-<div class="card" style="width: fit-content">
-  <% if dog.image.present? %>
-      <%= image_tag dog.image.variant(resize_to_limit: [405, 405]).processed, alt: "#{dog.name}"  %>
-  <% end %>
-  <div class="card-body">
-    <h5 class="card-title"><%= dog.name %></h5>
-    <p class="card-text"><strong>Likes:</strong> <%= dog.likes %></p>
+<div class="col">
+  <div class="card" style="width: fit-content">
+    <% if dog.image.present? %>
+        <%= image_tag dog.image.variant(resize_to_limit: [405, 405]).processed, alt: "#{dog.name}"  %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= dog.name.capitalize %></h5>
+      <p class="card-text"><strong>Likes:</strong> <%= dog.likes %></p>
+    </div>
+    <ul class="list-group list-group-flush w-100">
+      <li class="list-group-item w-100">
+        <%= button_to dog, method: :get, class: "btn btn-primary w-100" do %>
+          View Dog
+        <% end %>
+      </li>
+    </ul>
   </div>
-  <ul class="list-group list-group-flush w-100">
-    <li class="list-group-item w-100">
-      <%= button_to dog, method: :get, class: "btn btn-primary w-100" do %>
-        View Dog
-      <% end %>
-    </li>
-  </ul>
 </div>

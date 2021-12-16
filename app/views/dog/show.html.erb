@@ -2,11 +2,11 @@
   <div class="row row-cols-3">
     <div class="col-5">
       <% if @dog.image.present? %>
-          <%= image_tag @dog.image.variant(resize_to_limit: [705, 705]).processed, alt: "#{@dog.name}"  %>
+          <%= image_tag @dog.image.variant(resize_to_limit: [505, 505]).processed, alt: "#{@dog.name}"  %>
       <% end %>
     </div>
     <div class="col-6">
-      <h2><%= @dog.name %></h2>
+      <h2><%= @dog.name.capitalize %></h2>
       <p><strong>Age:</strong> <%= @dog.age %></p>
       <p><strong>Gender:</strong> <%= @dog.gender %></p>
       <p><strong>Size:</strong> <%= @dog.size %></p>

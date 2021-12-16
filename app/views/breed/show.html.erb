@@ -1,12 +1,12 @@
 <div class="container">
   <div class="container">
-    <h2><%= @breed.title %></h2>
+    <h2><%= @breed.title.capitalize %></h2>
     <br />
     <hr />
     <p><strong>Dogs with this breed: </strong></p>
     <br />
     <%= paginate @dogs %>
-    <section id="dogs" class="container mt-5 mb-5 d-flex flex-wrap">
+    <section id="dogs" class="mt-5 mb-5 row row-cols-2">
       <%= render partial: "breed/breed_dog", collection: @dogs, as: :dog %>
     </section>
     <%= paginate @dogs %>

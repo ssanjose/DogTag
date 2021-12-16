@@ -1,2 +1,19 @@
-<h1>Breed#index</h1>
-<p>Find me in app/views/breed/index.html.erb</p>
+<div class="container">
+  <h2>Dog Breeds</h2>
+
+  <hr />
+  <%= paginate @breeds %>
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Dogs Catalogued</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "breed/breed_list", collection: @breeds, as: :breed %>
+    </tbody>
+  </table>
+  <%= paginate @breeds %>
+</div>

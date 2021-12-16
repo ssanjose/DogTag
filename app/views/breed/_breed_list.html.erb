@@ -1,0 +1,9 @@
+<tr>
+  <td><%= breed.title.capitalize %></td>
+  <td><%= breed.breed_dogs.count %></td>
+  <td>
+    <%= button_to breed, method: :get, class: "btn btn-primary" do %>
+      View Breed Information
+    <% end %>
+  </td>
+</tr>
