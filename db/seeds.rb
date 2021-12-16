@@ -60,21 +60,32 @@ Breed.all.each do |breed|
     size:   size.to_s
   )
 
-  unless dog.valid?
-    # for each column check for errors:
-    dog.errors.messages.each do |column, errors|
-      # for each message ON each column:
-      errors.each do |error|
-        puts "ERROR: #{column} #{error}"
-      end
-    end
-  end
+  # unless dog.valid?
+  #   # for each column check for errors:
+  #   dog.errors.messages.each do |column, errors|
+  #     # for each message ON each column:
+  #     errors.each do |error|
+  #       puts "ERROR: #{column} #{error}"
+  #     end
+  #   end
+  # end
 
   dog.breed_dogs.find_or_create_by(breed_id: breed.id)
   rand(0..2).times do
     dog.breed_dogs.find_or_create_by(breed_id: Breed.find(rand(breed_inc...(breed_count + breed_inc))).id)
   end
 end
+
+dog = Dog.first
+title = dog.breed_dogs.first.breed.title
+puts title
+
+uri = URI("https://dog.ceo/api/breed/#{title}/images/random")
+response = Net::HTTP.get(uri)
+image_link = JSON.parse(response)["message"]
+
+dog.image.attach(io:       URI.open(image_link),
+                 filename: "dog-#{dog.name}.jpg")
 
 puts "Created #{Breed.count} Breeds."
 puts "Created #{Owner.count} Owners."
