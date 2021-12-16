@@ -1,2 +1,23 @@
-<h1>Main#about</h1>
-<p>Find me in app/views/main/about.html.erb</p>
+<div class="container">
+  <h2>About Us</h2>
+  <hr />
+  <p>DogTag is a non-profit organization in which individuals can share their lovely partners. In this website, visitors can see dog breeds, dogs, and their owners. They can also give like to the cute dogs in the website.</p>
+
+  <%= image_tag ("IntroToRailsProjectProposalERD.drawio.png"), alt: "ERD" %>
+
+  <br />
+  <br />
+
+  <h3>ERD</h3>
+  <hr />
+  <div class="container">
+    <h4>Resources:</h4>
+    <ul>
+      <li>Dog API: <a href="https://dog.ceo/dog-api/">https://dog.ceo/dog-api/</a></li>
+      <li>Faker Dataset: <a href="https://github.com/faker-ruby/faker">https://github.com/faker-ruby/faker</a></li>
+    </ul>
+  </div>
+  <p><strong>Breed</strong>: The Breeds of the Dog resourced from the Dog API</p>
+  <p><strong>Dog</strong>: The Dog records resourced from the Faker Dataset</p>
+  <p><strong>Owner</strong>: The Owners of the Dog resourced from the Faker Dataset</p>
+</div>
