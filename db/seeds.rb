@@ -70,22 +70,23 @@ Breed.all.each do |breed|
   #   end
   # end
 
-  dog.breed_dogs.find_or_create_by(breed_id: breed.id)
+  breed_dog = dog.breed_dogs.find_or_create_by(breed_id: breed.id)
+  title = breed_dog.breed.title
+
+  uri = URI("https://dog.ceo/api/breed/#{title}/images/random")
+  response = Net::HTTP.get(uri)
+  image_link = JSON.parse(response)["message"]
+  if image_link != "Breed not found (master breed does not exist)"
+    dog.image.attach(io:       URI.open(image_link),
+                     filename: "dog-#{dog.name}.jpg")
+  end
+
+  sleep(3)
+
   rand(0..2).times do
     dog.breed_dogs.find_or_create_by(breed_id: Breed.find(rand(breed_inc...(breed_count + breed_inc))).id)
   end
 end
-
-dog = Dog.first
-title = dog.breed_dogs.first.breed.title
-puts title
-
-uri = URI("https://dog.ceo/api/breed/#{title}/images/random")
-response = Net::HTTP.get(uri)
-image_link = JSON.parse(response)["message"]
-
-dog.image.attach(io:       URI.open(image_link),
-                 filename: "dog-#{dog.name}.jpg")
 
 puts "Created #{Breed.count} Breeds."
 puts "Created #{Owner.count} Owners."

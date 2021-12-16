@@ -1,12 +1,11 @@
 <div class="container">
-
-  <div class="container d-flex flex-wrap">
-    <div>
+  <div class="row row-cols-3">
+    <div class="col-5">
       <% if @dog.image.present? %>
           <%= image_tag @dog.image.variant(resize_to_limit: [705, 705]).processed, alt: "#{@dog.name}"  %>
       <% end %>
     </div>
-    <div class="ms-5">
+    <div class="col-6">
       <h2><%= @dog.name %></h2>
       <p><strong>Age:</strong> <%= @dog.age %></p>
       <p><strong>Gender:</strong> <%= @dog.gender %></p>
@@ -18,7 +17,10 @@
           <%= @dog.breed_dogs.count-1 != index ? ", " : "" %>
         <% end %>
       </p>
-      <p><strong>Likes:</strong> <%= @dog.likes %></p>
+
+    </div>
+    <div  class="col mt-5">
+      <h3><strong>Likes:</strong> <%= @dog.likes %></h3>
     </div>
   </div>
 </div>
