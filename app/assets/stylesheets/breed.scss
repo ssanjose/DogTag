@@ -1,0 +1,36 @@
+// Place all the styles related to the Breed controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+#dogs > div {
+  border-radius: var(--border-radius);
+  margin: 1rem;
+  width: var(--width-card);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: relative;
+}
+
+#dogs h3 {
+    line-height: var(--line-height);
+}
+
+#dogs p {
+  margin: 0.75rem 0;
+  padding: 0;
+  width: auto;
+}
+
+#dogs .item-cart {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+}
+
+#dogs img {
+    max-width: 100%;
+}

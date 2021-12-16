@@ -3,7 +3,7 @@
   <div class="container d-flex flex-wrap">
     <div>
       <% if @dog.image.present? %>
-          <%= image_tag @dog.image.variant(resize_to_limit: [505, 505]).processed, alt: "#{@dog.name}"  %>
+          <%= image_tag @dog.image.variant(resize_to_limit: [705, 705]).processed, alt: "#{@dog.name}"  %>
       <% end %>
     </div>
     <div class="ms-5">
@@ -14,9 +14,11 @@
       <p><strong>Owner:</strong> <%= link_to @dog.owner.name, @dog.owner %></p>
       <p><strong>Breed: </strong>
         <% @dog.breed_dogs.each.with_index do |breed_dog, index| %>
-          <%= link_to breed_dog.breed.title, breed_dog.breed %></p>
-          <%= @dog.breed_dogs.count-1 != i ? ", " : "" %>
+          <%= link_to breed_dog.breed.title, breed_dog.breed %>
+          <%= @dog.breed_dogs.count-1 != index ? ", " : "" %>
         <% end %>
+      </p>
+      <p><strong>Likes:</strong> <%= @dog.likes %></p>
     </div>
   </div>
 </div>
