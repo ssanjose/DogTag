@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   def index
-    @dogs = Dog.all.order("likes").page(params[:page])
+    @dogs = Dog.all.order("likes DESC").page(params[:page])
     render "dog/index" and return
   end
 

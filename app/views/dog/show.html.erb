@@ -21,6 +21,9 @@
     </div>
     <div  class="col mt-5">
       <h3><strong>Likes:</strong> <%= @dog.likes %></h3>
+      <%= button_to "/dog/upvote/#{@dog.id}", method: :post, class: "btn btn-primary d-inline-block" do %>
+        <i class="bi bi-hand-thumbs-up-fill"></i>
+      <% end %>
     </div>
   </div>
 </div>

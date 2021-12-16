@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "about", to: "main#about"
 
   post "dog/search", to: "dog#search"
+  post "dog/upvote/:id", to: "dog#upvote"
   resources :dog, only: %i[index show]
 
   resources :owner, only: %i[index show]
