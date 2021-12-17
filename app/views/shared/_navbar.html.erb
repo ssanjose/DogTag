@@ -5,7 +5,7 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
             <%= link_to "Home",  root_path, class: "nav-link" %>
@@ -23,6 +23,12 @@
             <%= link_to "Owners",  root_path, class: "nav-link" %>
           </li>
         </ul>
+
+        <%= form_tag(dog_search_path, method: "post", class: "d-flex", style: "width:auto;position:relative;") do %>
+          <%= search_field_tag :search, params[:search], placeholder: "Search Items", value: "", class: "form-control me-2"%>
+          <%= select_tag :breed_id, options_for_select(Breed.all.map{|t| [t.title.capitalize, t.id]}.unshift(['All', '0']), selected: 0), class: "form-control me-2" %>
+          <%= button_tag "Search", class: "btn btn-success"%>
+        <% end %>
       </div>
   </div>
   </nav>

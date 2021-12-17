@@ -1,2 +1,8 @@
-<h1>Dog#search</h1>
-<p>Find me in app/views/dog/search.html.erb</p>
+<div class="container">
+  <h2>Search</h2>
+  <p>Returned <%= @dogs.nil? ? "0" : @dogs.count %> entries.</p>
+
+  <ul>
+    <%= render partial: "dog/dog_search", collection: @dogs, as: :dog %>
+  </ul>
+</div>
